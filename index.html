@@ -1,609 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="author" content="Solmaz Seyed Monir" />
-  <title>Solmaz Seyed Monir</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-
-  <style>
-    :root{
-      --blue:#0056b3;
-      --blue2:#003d80;
-      --text:#222;
-      --muted:#666;
-      --border:#eee;
-      --shadow: 0 2px 10px rgba(0,0,0,0.06);
-      --radius:10px;
-    }
-
-    body{
-      font-family:'Roboto', sans-serif;
-      background:#fff;
-      color:var(--text);
-      margin:10px;
-      font-size:16px;
-    }
-
-    .container{
-      max-width:900px;
-      margin:0 auto;
-    }
-
-    /* Navbar */
-    .navbar{
-      background:var(--blue);
-      padding:8px 14px;
-      border-radius:8px;
-      margin-bottom:14px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
-    .navbar a{
-      color:#fff;
-      font-size:16px;
-      margin:0 8px;
-      text-decoration:none;
-      padding:6px 10px;
-      border-radius:6px;
-      font-weight:700;
-    }
-    .navbar a:hover{
-      background:var(--blue2);
-      transition:background-color .2s ease;
-    }
-
-    /* Header */
-    .profile-header{
-      display:flex;
-      align-items:center;
-      gap:16px;
-      margin-bottom:12px;
-    }
-    .profile-header img{
-      width:140px;
-      height:140px;
-      border-radius:50%;
-      border:3px solid #ddd;
-      box-shadow:0 3px 10px rgba(0,0,0,0.15);
-      object-fit:cover;
-      transition:transform .2s ease;
-    }
-    .profile-header img:hover{ transform:scale(1.03); }
-
-    .profile-header h1{
-      font-size:28px;
-      font-weight:600;
-      color:var(--blue);
-      margin:0 0 4px 0;
-      line-height:1.2;
-    }
-    .profile-header p{
-      font-size:16px;
-      font-weight:400;
-      margin:0 0 8px 0;
-      color:var(--muted);
-    }
-
-    .profile-links a{
-      color:var(--blue);
-      margin-right:10px;
-      font-size:20px;
-      text-decoration:none;
-    }
-    .profile-links a:hover{ color:var(--blue2); }
-
-    /* Sections */
-    .section{
-      margin-top:12px;
-      background:#fff;
-      padding:14px;
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      border:1px solid var(--border);
-    }
-    .section h2{
-      font-size:19px;
-      font-weight:700;
-      color:var(--blue);
-      margin:0 0 8px 0;
-    }
-    .section p{
-      font-size:16px;
-      line-height:1.65;
-      margin:0 0 10px 0;
-    }
-
-    /* UW Story box */
-    .uw-story{
-      background:#f7f3ff;
-      border:1px solid #ece3ff;
-    }
-    .uw-story .uw-story-head{
-      border-left:5px solid #4b2e83;
-      padding-left:12px;
-      margin-bottom:10px;
-    }
-    .uw-story .uw-story-head h2{
-      color:#4b2e83;
-      margin-bottom:4px;
-    }
-    .uw-story .uw-story-head p{
-      color:#4b2e83;
-      margin:0;
-      font-size:14px;
-    }
-
-    /* Project cards: tighten images + text */
-    .proj-title{
-      font-size:18px;
-      font-weight:700;
-      color:var(--blue);
-      margin:0 0 8px 0;
-      line-height:1.25;
-    }
-    .badges img{ height:28px; }
-
-    /* Timeline */
-    .timeline{
-      position:relative;
-      margin-left:14px;
-      padding-left:20px;
-      border-left:3px solid #d32f2f;
-    }
-    .timeline-item{
-      position:relative;
-      margin-bottom:16px;
-    }
-    .timeline-item::before{
-      content:"";
-      position:absolute;
-      left:-29px;
-      top:4px;
-      width:12px;
-      height:12px;
-      background:#d32f2f;
-      border-radius:50%;
-    }
-    .timeline-item h4{
-      margin:0;
-      font-size:16px;
-      font-weight:700;
-    }
-    .timeline-item span{
-      color:#777;
-      font-size:13px;
-      display:block;
-      margin-top:2px;
-    }
-    .timeline-item p{
-      margin:6px 0 0;
-      font-size:15px;
-      color:#333;
-    }
-    .timeline-item ul{
-      margin:6px 0 0 18px;
-      font-size:15px;
-    }
-    .timeline-item li{ margin-bottom:3px; }
-
-    /* Footer */
-    footer{
-      margin-top:20px;
-      text-align:center;
-      color:#888;
-      font-size:14px;
-    }
-    .footer-icons{
-      display:flex;
-      justify-content:center;
-      margin-top:10px;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .footer-icons a{
-      color:var(--blue);
-      font-size:22px;
-      text-decoration:none;
-    }
-    .footer-icons a:hover{ color:var(--blue2); }
-
-    /* Helpers */
-    .small-muted{ color:var(--muted); font-size:14px; }
-    .link-blue{ color:var(--blue); text-decoration:none; }
-    .link-blue:hover{ color:var(--blue2); text-decoration:underline; }
-
-    /* Responsive */
-    @media (max-width: 640px){
-      .profile-header{ flex-direction:column; align-items:flex-start; }
-      .profile-header img{ width:120px; height:120px; }
-    }
-
-.pubs { margin-top: 6px; }
-
-.pub {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  padding: 10px 0;
-  border-top: 1px solid var(--border);
-}
-
-.pub:first-child { border-top: 0; padding-top: 0; }
-
-.pub-img {
-  width: 170px;
-  max-width: 170px;
-  height: auto;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: #fff;
-}
-
-.pub-title {
-  font-size: 16px;
-  font-weight: 700;
-  margin: 0 0 4px 0;
-  line-height: 1.25;
-}
-
-.pub-authors {
-  font-size: 14px;
-  margin: 0 0 4px 0;
-  color: #222;
-}
-
-.pub-venue {
-  font-size: 13px;
-  color: #555;
-}
-
-.pub-links a {
-  color: var(--blue);
-  text-decoration: none;
-  margin-right: 6px;
-}
-
-.pub-links a:hover { text-decoration: underline; }
-
-/* Make shields smaller everywhere */
-.badges img { height: 22px; }
-  </style>
-</head>
-
-
-<body>
-
-<div class="container">
-  <!-- Navbar -->
-  <nav class="navbar">
-    <a href="https://solmazsm.github.io/develop/#/W">Work</a>
-    <a href="https://solmazsm.github.io/develop/#/">About</a>
-   
-    <a href="https://www.linkedin.com/in/solmaz-seyedmonir/">Contact</a>
-  </nav>
-
-  <!-- Profile Header -->
-  <div class="profile-header">
-    <img src="sol.jpeg" alt="Solmaz Seyed Monir">
-    <div>
-      <h1>Solmaz Seyed Monir</h1>
-    
-      
-      <div class="profile-links">
-        <a href="https://scholar.google.com/citations?user=OqOv6t8AAAAJ&hl=en"><i class="fab fa-google"></i></a>
-        <a href="https://github.com/solmazsm"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/solmaz-seyedmonir/"><i class="fab fa-linkedin"></i></a>
-        <a href="https://solmazsm.github.io/develop/#/"><i class="fas fa-file-code" ></i></a>
-
-        <a href="https://students.washington.edu/solmazsm/">
-  <i class="fas fa-university"></i> UW
-</a>
-
-      </div>
-    </div>
-  </div>
-
- <!-- About Me Section -->
-<div class="section">
- <p>
-    I'm a Ph.D. student at the University of Washington, advised by <strong><a href="https://faculty.washington.edu/dzhao/" style="color: #0056b3;">Professor Dongfang Zhao</a></strong>. My research focuses on the intersection of database systems and data retrieval. I develop efficient indexing techniques to optimize data retrieval strategies in large-scale vector databases. 
-  </p>
-  
-
-  <p><strong>Research Areas:</strong> Database Systems, Large-Scale Data Management, Information Retrieval, Indexing Techniques</p>
-</div>
-
-<!-- Current Research Section -->
-<div class="section">
-  <h2>Current Research</h2>
-  <p>
-    I am currently researching advanced indexing and search techniques. 
-  </p>
-</div>
-
-
-<!-- VectorSearch -->
-<div class="section">
-  <div style="display:flex; flex-wrap:wrap; gap:14px; align-items:flex-start;">
-
-    <!-- Image on the left -->
-    <img src="vec.gif"
-         alt="VectorSearch Illustration"
-         class="img-fluid"
-         style="width:220px; height:auto; border-radius:10px;">
-
-    <!-- Text on the right -->
-    <div style="flex:1; min-width:240px;">
-
-      <div class="proj-title">
-        VectorSearch: Enhancing Document Retrieval with Semantic Embeddings and Optimized Search
-      </div>
-
-      <p>
-        <strong>VectorSearch</strong> is a hybrid vector retrieval system that integrates semantic embeddings, multi-vector search,
-        and hybrid indexing to improve retrieval accuracy and query efficiency through optimized index design and dynamic vector management.
-      </p>
-
-      <div class="badges" style="margin-top:8px;">
-        <a href="https://solmazsm.github.io/VectorSearch/" target="_blank" rel="noopener">
-          <img src="https://img.shields.io/badge/Website-0056b3?style=flat-square&logo=google-chrome&logoColor=white" alt="Website">
-        </a>
-        <a href="https://github.com/solmazsm/VectorSearch" target="_blank" rel="noopener">
-          <img src="https://img.shields.io/badge/Code-000000?style=flat-square&logo=github&logoColor=white" alt="Code">
-        </a>
-        <a href="https://arxiv.org/abs/2409.17383" target="_blank" rel="noopener">
-          <img src="https://img.shields.io/badge/arXiv-B31B1B?style=flat-square&logo=arxiv&logoColor=white" alt="arXiv">
-        </a>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-  
-
-<!-- NexusIndex -->
-<div class="section">
-  <div style="display:flex; flex-wrap:wrap; gap:14px; align-items:flex-start;">
-
-    <!-- Single image on the left -->
-    <img src="semantic_similarity_distribution.jpg"
-         alt="Semantic Similarity Distribution"
-         class="img-fluid"
-         style="width:220px; height:auto; border-radius:8px;">
-
-    <!-- Text on the right -->
-    <div style="flex:1; min-width:240px;">
-
-      <div class="proj-title">
-        NexusIndex: A Self-Optimizing Multimodal Framework for Fake News Detection with Dynamic Indexing and Retrieval
-      </div>
-
-      <p>
-        <strong>NexusIndex</strong> integrates multi-model embeddings, attention mechanisms, and a FAISSNexusIndex layer to support
-        efficient fake news detection via dynamic vector indexing and real-time retrieval across textual and visual data.
-      </p>
-
-      <div class="badges" style="margin-top:6px;">
-        <a href="https://ieeexplore.ieee.org/document/11225937" target="_blank" rel="noopener">
-          <img src="https://img.shields.io/badge/IEEE%20MIPR%202025-0033A0?style=flat-square&logo=ieee&logoColor=white">
-        </a>
-        <a href="https://solmazsm.github.io/NexusIndex/" target="_blank" rel="noopener">
-          <img src="https://img.shields.io/badge/Website-0056b3?style=flat-square&logo=google-chrome&logoColor=white">
-        </a>
-        <a href="https://github.com/solmazsm/NexusIndex" target="_blank" rel="noopener">
-          <img src="https://img.shields.io/badge/Code-000000?style=flat-square&logo=github&logoColor=white">
-        </a>
-        <a href="https://arxiv.org/abs/2410.18294" target="_blank" rel="noopener">
-          <img src="https://img.shields.io/badge/arXiv-B31B1B?style=flat-square&logo=arxiv&logoColor=white">
-        </a>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-
-<div class="section">
-  <img src="VecLSTM.jpg" alt="VecLSTM Research Diagram" class="img-fluid" style="max-width: 100%; height: auto; margin-bottom: 20px; border-radius: 10px;">
-
-  <h2 style="font-size: 24px; font-weight: bold; color: #0056b3;">
-    VecLSTM: Trajectory Data Processing and Management for Activity Recognition through LSTM Vectorization and Database Integration
-  </h2>
-
-  <p>
-    <strong>VecLSTM</strong> is a hybrid framework that enhances trajectory prediction by integrating dynamic vectorization techniques with a CNN–LSTM architecture. It efficiently processes trajectory data within a relational database environment, improving both accuracy and training time compared to traditional LSTM models.
-  </p>
-
-  <div align="left" style="margin-top: 20px; margin-bottom: 10px;">
-   
-    <a href="https://github.com/solmazsm/VecLSTM" target="_blank">
-      <img src="https://img.shields.io/badge/Code-000000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Code Badge"/>
-    </a>
-    <a href="https://arxiv.org/abs/2409.19258" target="_blank">
-      <img src="https://img.shields.io/badge/arXiv-B31B1B?style=for-the-badge&logo=arxiv&logoColor=white" alt="arXiv Preprint Badge"/>
-    </a>
-  </div>
-</div>
-
-
-  
-
-<div class="pub">
-  <div style="display:flex; flex-wrap:wrap; align-items:flex-start; gap:20px;">
-
-    <img src="image_cache_optimization.gif"
-         alt="Efficient Feature Extraction Illustration"
-         class="img-fluid"
-         style="width:220px; height:auto; float:left; margin-right:20px; margin-bottom:20px; border-radius:10px;">
-
-    <div style="flex:1; min-width:240px;">
-
-      <a href="https://ieeexplore.ieee.org/abstract/document/10541352"
-         target="_blank"
-         style="color:#0056b3; font-weight:bold; font-size:18px; text-decoration:none;">
-        Efficient Feature Extraction for Image Analysis through Adaptive Caching in Vector Databases
-      </a>
-
-      <p>
-        This research introduces a caching subsystem leveraging in-memory vector databases to enhance the efficiency of image feature extraction.
-        Using advanced models like MobileNetV3 and ResNet50, the framework integrates batch insertion and parallel processing to optimize computational performance.
-      </p>
-
-      <p style="margin:0;">
-        <a href="https://ieeexplore.ieee.org/abstract/document/10541352"
-           target="_blank"
-           style="color:#0056b3; font-weight:bold; font-size:16px;">
-          ICICT 2024
-        </a>
-      </p>
-
-    </div>
-  </div>
-</div>
-
-
+  <!-- Education & Experience -->
   <div class="section">
-  <div style="display:flex; flex-wrap:wrap; align-items:flex-start; gap:20px;">
+    <h2>Education &amp; Experience</h2>
+    <div class="timeline">
 
-    <img src="xyz.gif"
-         alt="Time Series Research"
-         class="img-fluid"
-         style="width:220px; height:auto; border-radius:10px;">
+      <div class="timeline-item">
+        <h4>University of Washington</h4>
+        <span>2021 – Present</span>
+        <p>PhD Student, Computer Science &amp; Systems</p>
+<span>Sep 2023 – Present</span>
+        <p>Graduate Research Assistant (AI &amp; Database Systems)</p>
+      </div>
 
-    <div style="flex:1; min-width:240px;">
+      <div class="timeline-item">
+        <h4>Handshake AI</h4>
+        <span>Nov 2025 – Present • Remote, USA</span>
+        <p>AI Research Fellow</p>
+      </div>
+<div class="timeline-item">
+  <h4>University of Washington</h4>
+  <span>2022 – 2023 </span>
+  <p>Graduate Research Assistant (Data Science & Mechanical Engineering)</p>
+  </div>
+      <div class="timeline-item">
+  <h4>North Seattle College</h4>
+  <span>Sep 2023 – Present • Seattle, WA, USA</span>
+  <p><strong>Lecturer</strong></p>
+  <p class="small-muted">
+    CSC 110 — Python Programming<br>
+    CSC 142 — Java Programming I
+  </p>
+</div>
 
-      <a href="https://asmedigitalcollection.asme.org/IMECE/proceedings-abstract/IMECE2023/87677/1196169"
-         target="_blank"
-         style="color:#0056b3; font-weight:bold; font-size:18px; text-decoration:none;">
-        Enhanced Chaotic Transition Prediction Using Hierarchical Clustering for the Lorenz System
-      </a>
 
-      <p>
-        This research focused on using deep neural networks and hierarchical clustering to predict chaotic transitions
-        in natural convection systems, specifically in the Lorenz system.
-      </p>
+      <div class="timeline-item">
+        <h4>Central Washington University</h4>
+        <span>Sep 2022 – 2023 • Ellensburg &amp; Des Moines, WA, USA</span>
+        <p><strong>Lecturer</strong></p>
+        
+          CS 380 — Software Engineering <br>
+          CS 470 — Operating Systems
+        
+      </div>
 
-      <p style="margin:0;">
-        <a href="https://asmedigitalcollection.asme.org/IMECE/proceedings-abstract/IMECE2023/87677/1196169"
-           target="_blank"
-           style="color:#0056b3; font-weight:bold; font-size:16px;">
-          IMECE 2023
-        </a>
-      </p>
+      <div class="timeline-item">
+        <h4>InstaHub</h4>
+        <span>Oct 2021 – Apr 2022 • Philadelphia, PA, USA</span>
+        <p>Software Engineering Intern</p>
+        <p>Developed analytics web interfaces, built REST APIs, and supported AWS-based deployment.</p>
+      </div>
+
+      <div class="timeline-item">
+        <h4>Illinois Institute of Technology</h4>
+        <span>2017 - 2019 • Chicago, IL, USA</span>
+        <p>M.S. in Information Technology Infrastructure (GPA: 4.0)</p>
+      </div>
+
+      <div class="timeline-item">
+        <h4>Azad University</h4>
+        <span>M.S. in Data Science</span>
+        <p>Thesis: Modeling for Customer Value Optimization in Contact Centers</p>
+      </div>
+
+      <div class="timeline-item">
+        <h4>University of Science &amp; Culture</h4>
+        <span>B.E. in Computer Software Engineering</span>
+      </div>
 
     </div>
   </div>
-</div>
- <!-- Service -->
-  <!-- Service -->
-  <div class="section">
-    <h2>Academic Service</h2>
-
-    <p style="margin-bottom:8px;">
-      <strong>Program Committee:</strong>
-      The Web Conference (WWW) 2026
-      <span class="small-muted">— Security &amp; Privacy Track</span>
-    </p>
-
-    <p style="margin-bottom:0;">
-      <strong>Reviewer:</strong>
-      <a class="link-blue" href="https://dl.acm.org/action/showFmPdf?doi=10.1145%2F3696410" target="_blank" rel="noopener">WWW 2025
-      — Search &amp; Retrieval-Augmented AI Track</a>,
-      <a class="link-blue" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11181533" target="_blank" rel="noopener">IEEE eScience 2025</a>,
-     IPDPS 2025,
-     ICDCS 2025,
-     ACM CIKM 2024,
-      <a class="link-blue" href="https://journalofbigdata.springeropen.com/" target="_blank" rel="noopener">Journal of Big Data</a>
-      <span class="small-muted">(2024–2025)</span>
-    </p>
-  </div>
-
-
-
-
-
-
-<!-- Teaching Experience -->
-<div class="section">
-  <h2>Teaching Experience</h2>
-
-  <p>
-    <strong>Lecturer — North Seattle College</strong>  
-    <br>
-    Department of Math & Science  
-    <br>
-    <em>September 2023 – Present, Seattle, WA</em>  
-    <br>
-    • CSC 110: Python Programming  
-    <br>
-    • CSC 142: JAVA Computer Programming I (LEC)  
-    <br>
-    <a href="https://people.seattlecolleges.edu/users/solmaz.monir" target="_blank" style="color: #0056b3; text-decoration: none;">
-      Instructor Page
-    </a>
-  </p>
-
-  <p>
-    <strong>Lecturer — Central Washington University</strong>  
-    <br>
-    Department of Computer Science  
-    <br>
-    <em>September 2022 – 2023, Ellensburg & Des Moines, WA</em>  
-    <br>
-    • CS380: Software Engineering (Java and Project Management)  
-    <br>
-    • CS470: Operating Systems (Online – C, C++, and Linux)
-  </p>
-</div>
- <!-- Education -->
-<div class="section">
-  <h2>Education</h2>
-  <p>
-   <p>
-  I received my second Master’s degree in Information Technology Infrastructure from 
-  <a href="https://www.iit.edu/" target="_blank" style="color: #0056b3; text-decoration: none;"><strong>Illinois Institute of Technology</strong></a>, Chicago, USA, with a 4.0 GPA. 
-  I also received a Master’s degree in Data Science, where my thesis focused on providing a model for optimizing customer value at the contact center. 
-  Additionally, I completed a Bachelor's degree in Computer Software Engineering.
-</p>
-
-  </p>
-</div>
-
-
-
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 Solmaz Seyed Monir
-    <div class="footer-icons">
-      <a href="https://scholar.google.com/citations?user=OqOv6t8AAAAJ&hl=en"><i class="fab fa-google"></i></a>
-      <a href="https://github.com/solmazsm"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/solmaz-seyedmonir/"><i class="fab fa-linkedin"></i></a>
-      <a href="https://solmazsm.github.io/develop/#/"><i class="fas fa-file-code"></i></a>
-<a href="https://solmazsm.github.io"><i class="fas fa-globe"></i></a>
- <a href="https://students.washington.edu/solmazsm/">
-  <i class="fas fa-university"></i> UW
-</a>
-    </div>
-  </footer>
-</div>
-
-<!-- Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
-
-
-
